@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" ng-app="instatest2">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>Fonctionnalités</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://code.angularjs.org/1.4.8/angular-route.min.js"></script> 
+	<script src="https://code.angularjs.org/1.4.8/angular-cookies.js"></script> 
+
+    <script src="angularinsta.js"></script>
+
+  </head>
+
+  <body ng-controller="TController" style="background-color: #e6d5ca; font-family: Comic sans MS">
+
+		<nav class="purple">
+    		<div class="nav-wrapper">
+		
+	      		<div>
+		      		<ul id="nav-mobile" class="left">
+		      			<li> 	      		
+		      				<a title="tiny instagram page" href="./">
+	      						<img src="favicon.ico" width="auto" height="64 px">
+	      					</a>
+	      				</li>
+	      				<li ng-hide="log"><a href="indexRegister.html" class="btn purple">Créer un compte </a></li>
+		        		<li ng-hide="log"><a href="indexConnexion.html" class="btn purple">S'identifier</a></li>
+		        		<li><a href="fonctionnalites.html" class="btn purple disabled ">Fonctionnalités</a></li>
+		        		<li ng-show="log">
+		                  <form class="form-inline" ng-submit="deconnexion()">
+		                        <button type="submit" class="btn btn-primary">Deconnexion</button>
+		                  </form>
+		                </li>
+		      		</ul>
+		      	</div>
+    		</div>
+  		</nav>
+
+
+  		<h1 style = "font-size : 40px; text-align:center;"><font color="grey">Tests de performance </font></h1>
+
+	  	<div class ="container" style="padding-top: 16px">
+			<div class="row">		
+			
+
+				<p><b>How much time it takes to post of message if followed by 10, 100 and 500 followers? (average on 30 measures)</b></p>
+
+				<br>
+				<p> Pour un utilisateur ayant <b>500</b> followers, le temps moyen pour poster est de <b>2412 ms </b></p>
+				<i> Vous pouvez utiliser le compte User500Followers::u500fpw pour tester (Le résultat s'affiche dans l'URL en ms)</i>
+
+
+				<br>
+				<p> Pour un utilisateur ayant <b>100</b> followers, le temps moyen pour poster est de <b>1811 ms </b></p>
+				<i> Vous pouvez utiliser le compte User100Followers::u100fpw pour tester (Le résultat s'affiche dans l'URL en ms)</i>
+			
+				<br>
+				<p> Pour un utilisateur ayant <b>10</b> followers, le temps moyen pour poster est de <b>1474 ms </b></p>
+				<i> Vous pouvez utiliser le compte User10Followers::u10fpw pour tester (Le résultat s'affiche dans l'URL en ms)</i>
+
+				<hr>
+				<hr>
+
+				<p><b>How much time it takes to retrieve the last 10,100 and 500 last messages ? (average of 30 measures)</b></p>
+
+				<br>
+				<p> Pour recuper <b>500</b> messages d'un coup, le temps moyen est de <b>9392 ms </b></p>
+				<i> Vous pouvez utiliser le compte User500PTL::User500PTLpw pour tester l'affichage de la Timeline</i>	
+
+				<br>
+				<p> Pour recuper <b>100</b> messages d'un coup, le temps moyen est de <b>3142 ms </b></p>
+				<i> Vous pouvez utiliser le compte User100PTL::User100PTLpw pour tester l'affichage de la Timeline</i>	
+
+				<br>
+				<p> Pour recuper <b>10</b> messages d'un coup, le temps moyen est de <b>904 ms </b></p>
+				<i> Vous pouvez utiliser le compte User10PTL2::User10PTL2pw pour tester l'affichage de la Timeline</i>
+			
+			</div>
+
+		</div>
+
+	<script>
+		var init = function() {
+			window.init();
+		};
+	</script>
+	
+	<script src="https://apis.google.com/js/client.js?onload=init"></script>
+	</body>
+</html>

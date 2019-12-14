@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" ng-app="instatest2">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>Tiny Insta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.8/angular-route.min.js"></script> 
+    <script src="https://code.angularjs.org/1.4.8/angular-cookies.js"></script> 
+    <script src="angularinsta.js"></script>
+
+  </head>
+
+
+  <body id="id-controller" ng-controller="TController" style="background-color: #e6d5ca; font-family: Comic sans MS">
+
+    <nav class="purple">
+        <div class="nav-wrapper">
+    
+            <div>
+              <ul id="nav-mobile" class="left">
+                <li>            
+                  <a title="tiny instagram page" href="./">
+                    <img src="favicon.ico" width="auto" height="64 px">
+                  </a>
+                </li>
+                <li ng-hide="log"><a href="indexRegister.html" class="btn purple">Créer un compte </a></li>
+                <li ng-hide="log"><a href="indexConnexion.html" class="btn purple">S'identifier</a></li>
+                <li><a href="fonctionnalites.html" class="btn purple">Fonctionnalités</a></li>
+                <li ng-show="log">
+                  <form class="form-inline" ng-submit="deconnexion()">
+                        <button type="submit" class="btn btn-primary">Deconnexion</button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 ng-hide="log" style = "font-size : 40px; text-align:center;"><font color="grey">Bonjour visiteur anonyme, connectez-vous ou inscrivez-vous ! </font></h1>
+
+
+    <div ng-hide="log" style="display: flex; justify-content : space-around;">
+
+          <button onclick="window.location.href = '/indexRegister.html';" class="btn btn-default" style="min-height: 130px; font-size: 50px;">
+              S'inscrire
+          </button>
+
+          <button onclick="window.location.href = '/indexConnexion.html';" class="btn btn-default purple" style="min-height: 130px; font-size: 50px;">
+              Connexion
+          </button>
+
+    </div>
+
+    <br>
+
+
+    <h1 ng-show="log"><font color="green">Bonjour {{login}}, vous êtes bien connecté !</font></h1>
+
+
+    <div ng-show="log" class="form-group">
+
+      <h2> Creez un post ci-dessous ! </h2>
+
+      <form method="POST" action="/upload" enctype="multipart/form-data" style="background-color: #E6D5CA; border: 1px #F5EEA solid; padding: 5px" ng-show="log" class="col s12">
+          
+          <input id="input-nom" type="hidden" name="login" ng-value="login">
+          <label><b> Message :</b></label> <input type="text" name="message">
+          <br>
+          <label><b> Image :</b></label>
+          <br>
+          <input type="file" name="file">
+          <br>
+          <button type="submit" class="btn btn-primary purple">Poster !</button>
+      </form>
+
+    </div>
+
+
+    <div class="col-md-12" style="background-color: #F5EEEA" ng-show="log">
+
+      <hr>
+      <h2> Suivez vos amis ! </h2>
+
+      <form class="form-inline" ng-submit="FCfollow(toFollow)">
+        <label>Qui voulez vous follow?</label>
+        <input id="champ-follow" type="text" placeholder="Pseudo" class="form-control" ng-model="toFollow">
+        <button type="submit" class="btn btn-primary">Follow !</button>
+      </form>
+
+    </div>
+
+
+    <div ng-show="log">
+
+      <h2><u> Votre fil d'actualités ! </u></h2>
+
+      <form  ng-submit="FCgetPosts()" ng-hide="listPosts.length != 0">
+        <button type="submit" class="btn btn-primary purple">Chargez votre fil d'actualité</button>
+      </form>
+
+
+      <div class="col-md-12" style="background-color: #E6D5CA; border: 1px #F5EEA solid; padding: 5px" 
+        ng-repeat="x in listPosts">
+        <form class="form-inline" ng-submit="FClike(x.key.id)">
+          <p style="font-size : 35px">Par <b>{{x.author}}</b></p>
+          <p style="font-size : 18px"> le {{x.date}} : </p>
+          <p style="font-size : 25px">{{x.text}}</p>
+          <p style="font-size : 20px">Likes du post : {{x.nbLikesPost}}</p>
+          <img src = "{{x.urlImage}}" style="max-width : 700px">
+          <br>
+          <button type="submit" class="btn btn-primary">LIKER CE POST</button>
+
+          <hr>
+        </form>
+      </div>
+    </div>
+
+
+  <script>
+    var init = function() {
+      window.init();
+    };
+  </script>
+
+  <script src="https://apis.google.com/js/client.js?onload=init"></script>
+
+  </body>
+
+
+</html>

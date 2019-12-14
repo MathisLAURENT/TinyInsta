@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" ng-app="instatest2">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>Creation de compte</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <script src="https://code.angularjs.org/1.4.8/angular-route.min.js"></script> 
+	<script src="https://code.angularjs.org/1.4.8/angular-cookies.js"></script> 
+    <script src="angularinsta.js"></script>
+
+  </head>
+
+  <body ng-controller="TController" style="background-color: #e6d5ca; font-family: Comic sans MS">
+
+
+  	<nav class="purple">
+    		<div class="nav-wrapper">
+		
+	      		<div>
+		      		<ul id="nav-mobile" class="left">
+		      			<li> 	      		
+		      				<a title="tiny instagram page" href="./">
+	      						<img src="favicon.ico" width="auto" height="64 px">
+	      					</a>
+	      				</li>
+	      				<li><a href="indexRegister.html" class="btn disabled purple darken-1">Créer un compte </a></li>
+		        		<li><a href="indexConnexion.html" class="btn purple">S'identifier</a></li>
+		        		<li><a href="fonctionnalites.html" class="btn purple">Fonctionnalités</a></li>
+		      		</ul>
+		      	</div>
+    		</div>
+  	</nav>
+
+   <h1 ng-hide="log" style = "font-size : 40px; text-align:center;"><font color="grey">Bonjour visiteur anonyme, inscrivez vous  ci-dessous! </font></h1>
+	
+	<div class ="container" style="padding-top: 16px" ng-hide="log" >
+		<div class="row">		
+		
+			<form novalidate ng-submit="register(userlogin, usermail, userpw, userfirstname, userlastname)"
+				style="background-color: #E6D5CA; border: 1px #F5EEA solid; padding: 5px" ng-hide="log" class="col s12">
+				<div class="form-group">  
+					<ul>
+						<li> <label>Login : </label><input type="text" placeholder="login" class="form-control" ng-model="userlogin"> </li>
+						<li> <label>Email : </label><input type="text" placeholder="email" class="form-control" ng-model="usermail"> </li>
+						<li> <label>Mot de passe : </label><input type="password" placeholder="password" class="form-control" ng-model="userpw"> </li>
+						<li> <label>Prénom : </label><input type="text" placeholder="firstname" class="form-control" ng-model="userfirstname"> </li>
+						<li> <label>Nom : </label><input type="text" placeholder="lastname" class="form-control" ng-model="userlastname"> </li>
+											
+						<li>
+							<a href="./">
+							<button type="submit" class="btn btn-default purple">S'enregistrer !</button>
+							</a>
+						</li>
+
+					</ul>
+				</div>	
+				
+			</form>
+		
+		</div>
+
+	</div>
+
+
+
+	<script>
+		var init = function() {
+			window.init();
+		};
+	</script>
+	
+	<script src="https://apis.google.com/js/client.js?onload=init"></script>
+	</body>
+</html>
